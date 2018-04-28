@@ -1,0 +1,54 @@
+*{
+    font-size:12px;
+}
+body {
+    font-family:verdana,helvetica,arial,sans-serif;
+    padding:20px;
+    font-size:12px;
+    margin:0;
+}
+h2 {
+    font-size:18px;
+    font-weight:bold;
+    margin:0;
+    margin-bottom:15px;
+}
+.demo-info{
+    padding:0 0 12px 0;
+}
+.demo-tip{
+    display:none;
+}
+
+@font-face {
+    font-family: 'Sanet';
+    src: url("../fonts/alk-sanet.ttf");
+    font-stretch: ultra-condensed;
+}
+
+h2{font-family: 'Sanet';}
+.datagrid-cell-group{font-family: 'Sanet';}
+.l-btn-text{font-family: 'Sanet';}
+/*.datagrid-header .datagrid-cell span{font-family: 'Sanet';}*/
+
+
+span.icon{width: 26px; height:26px; display: block; float: left; margin-top: -2px; margin-right: 5px}
+
+.datagrid-header .datagrid-cell{text-align: center; font-weight: bold}
+
+/*
+.datagrid-header-row td:nth-child(2) {
+    border-left: 1px black solid;
+}
+*/
+/* .datagrid-cell-c2-rec_details {border-right: 1px black solid} */
+
+div.datagrid-cell-c2-rec_pid, div.datagrid-cell-c2-rec_age, div.datagrid-cell-c2-rec_phone,
+ div.datagrid-cell-c2-rhesus, div.datagrid-cell-c2-fibrosis, div.datagrid-cell-c2-bilirubin,
+ div.datagrid-cell-c2-ast, div.datagrid-cell-c2-alt, div.datagrid-cell-c2-ggt, div.datagrid-cell-c2-cr,
+ div.datagrid-cell-c2-inr, div.datagrid-cell-c2-albumin, div.datagrid-cell-c2-ascites, div.datagrid-cell-c2-encephalopathy,
+ div.datagrid-cell-c2-bleeding, div.datagrid-cell-c2-child, div.datagrid-cell-c2-meld, div.datagrid-cell-c2-don_pid,
+ div.datagrid-cell-c2-don_age, div.datagrid-cell-c2-relationship, div.datagrid-cell-c2-don_phone,
+ div.datagrid-cell-c2-don_rhesus
+ {text-align: center}
+

@@ -1,0 +1,124 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>Build CRUD DataGrid with jQuery EasyUI - jQuery EasyUI Demo</title>
+	<link rel="stylesheet" type="text/css" href="css/themes/easyui.css">
+	<link rel="stylesheet" type="text/css" href="css/themes/icon.css">
+	<link rel="stylesheet" type="text/css" href="css/demo.css">
+	<link rel="stylesheet" type="text/css" href="http://www.jeasyui.com/easyui/demo/demo.css">
+
+	<script type="text/javascript" src="js/jquery-1.6.min.js"></script>
+	<script type="text/javascript" src="js/jquery.easyui.min.js"></script>
+	<script type="text/javascript" src="js/jquery.edatagrid.js"></script>
+	<script type="text/javascript" src="js/datagrid-detailview.js"></script>
+
+
+	<script type="text/javascript">
+		$(function(){
+			$('#dg').edatagrid({
+				url: 'get_users.php',
+				saveUrl: 'save_user.php',
+				updateUrl: 'update_user.php',
+				destroyUrl: 'destroy_user.php'
+			});
+		});
+	</script>
+</head>
+<body>
+	<h2>CRUD DataGrid</h2>
+	<div class="demo-info" style="margin-bottom:10px">
+		<div class="demo-tip icon-tip">&nbsp;</div>
+		<div>Double click the row to begin editing.</div>
+
+		<div>
+		   <div style="float: left"> <input id="ss" style="width: 200px"></input></div>
+			<div style="float: left"> <input type="button">reset</input></div>
+		</div>
+	</div>
+
+
+
+	<!--class="easyui-datagrid"-->
+	<table id="dg"  title="My Users" style="width:2400px;height:550px"
+			toolbar="#toolbar" pagination="true" idField="id"
+			rownumbers="true" fitColumns="true" singleSelect="true">
+		<thead>
+		    <tr>
+				<th colspan="16">ინფორმაცია რეციპიენტზე</th>
+				<th colspan="6">ინფორმაცია დონორზე</th>
+			</tr>
+			<tr>
+				<th field="ddate" width="20" sortable="true" editor="{type:'datebox'}">თარიღი</th>
+				<th field="doctor" width="40" sortable="true" editor="{type:'validatebox',options:{required:true}}">ვის მიერაა კანდიდატი შეყვანილი მოლოდინის სიაში</th>
+				<th field="recipient" width="40" sortable="true" editor="{type:'textbox'}">რეციპიენტის გვარი, სახელი</th>
+				<th field="rec_age" width="10" sortable="true" editor="text">ასაკი</th>
+				<th field="diagnosis" width="40" sortable="true" editor="{type:'validatebox',options:{required:true}}">დიაგნოზი</th>
+				<th field="fibrosis" width="20" sortable="true" editor="text">ფიბროზის ხარისხი</th>
+				<th field="bilirubin" width="20" sortable="true" editor="text">ბილირუბინი</th>
+				<th field="ast" width="20" sortable="true" editor="text">ast</th>
+				<th field="alt" width="20" sortable="true" editor="text">alt</th>
+				<th field="ascites" width="20" sortable="true" editor="text">ასციტი</th>
+				<th field="albumin" width="20" sortable="true" editor="text">ალბუმინი</th>
+				<th field="encephalopathy" width="20" sortable="true" editor="text">ენცეფალოპათია</th>
+				<th field="bleeding" width="20" sortable="true" editor="text">სისხლდენა</th>
+				<th field="rec_address" width="20" sortable="true" editor="{type:'validatebox',options:{required:true}}">მისამართი</th>
+				<th field="rec_phone" width="20" sortable="true" editor="{type:'validatebox',options:{required:true}}">ტელეფონი</th>
+				<th field="rec_details" width="40" sortable="true" editor="{type:'textbox',options:{'multiline':true,'height':80}}">დამატებითი ინფორმაცია (მკურნალი ექიმის გვარი, ტელეფონი, სხვა ინფო)</th>
+				<th field="donor" width="20" sortable="true" editor="text">დონორის გვარი, სახელი</th>
+				<th field="don_age" width="10" sortable="true" editor="text">ასაკი</th>
+				<th field="relationship" width="40" sortable="true" editor="text">ნათესავური კავშირი</th>
+				<th field="don_address" width="20" sortable="true" editor="{type:'validatebox',options:{required:true}}">მისამართი</th>
+				<th field="don_phone" width="20" sortable="true" editor="{type:'validatebox',options:{required:true}}">ტელეფონი</th>
+				<th field="don_details" width="40" sortable="true" editor="{type:'textbox',options:{'multiline':true,'height':80}}">დამატებითი ინფორმაცია</th>
+			</tr>
+		</thead>
+	</table>
+	<div id="toolbar">
+		<a href="#" class="easyui-linkbutton" iconCls="icon-add" plain="true" onclick="javascript:$('#dg').edatagrid('addRow')">New</a>
+		<a href="#" class="easyui-linkbutton" iconCls="icon-remove" plain="true" onclick="javascript:$('#dg').edatagrid('destroyRow')">Destroy</a>
+		<a href="#" class="easyui-linkbutton" iconCls="icon-save" plain="true" onclick="javascript:$('#dg').edatagrid('saveRow'); $('.datagrid-row-collapse').click();">Save</a>
+		<a href="#" class="easyui-linkbutton" iconCls="icon-undo" plain="true" onclick="javascript:$('#dg').edatagrid('cancelRow')">Cancel</a>
+	</div>
+
+	<script type="text/javascript">
+
+		$(function(){
+			$('#dg').datagrid({
+				remoteSort:false,
+				view: detailview,
+				detailFormatter:function(index,row){
+					return '<div class="ddv"></div>';
+				},
+				onExpandRow: function(index,row){
+					var ddv = $(this).datagrid('getRowDetail',index).find('div.ddv');
+					ddv.panel({
+						border:false,
+						cache:true,
+						encoding:"UTF-8",
+						href:'show_form.php?index='+index + '&id='+ row.id,
+						onLoad:function(){
+							$('#dg').datagrid('fixDetailRowHeight',index);
+							$('#dg').datagrid('selectRow',index);
+							$('#dg').datagrid('getRowDetail',index).find('form').form('load',row);
+						}
+					});
+					$('#dg').datagrid('fixDetailRowHeight',index);
+				}
+			});
+
+			$('#ss').searchbox({
+				searcher:function(value,name){
+					window.location.href = "index.php?"+value;
+				}
+			});
+		});
+
+
+
+
+
+</script>
+	
+</body>
+</html>

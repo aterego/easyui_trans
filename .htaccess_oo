@@ -1,0 +1,5 @@
+AuthGroupFile /dev/null
+AuthType Basic
+AuthUserFile /home/transpla/domains/transplantation.ge/.htpasswd/public_html/list/.htpasswd
+AuthName "list"
+require valid-user
