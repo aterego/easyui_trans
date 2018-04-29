@@ -114,6 +114,9 @@ else
 				<th field="bleeding" width="20" sortable="true" editor="text">სისხლდენა</th>
 				<th field="child" width="20" sortable="false" editor="text">CHILD<br><a href="http://www.hepatitisc.uw.edu/page/clinical-calculators/ctp" style="font-size: smaller" target="_blank" > Calculator</a></th>
 				<th field="meld" width="20" sortable="false" editor="text">MELD<br><a href="http://www.hepatitisc.uw.edu/page/clinical-calculators/meld" style="font-size: smaller" target="_blank" > Calculator</a></th>
+                <th field="r_height" width="20" sortable="true" editor="text">სიმაღლე</th>
+                <th field="r_weight" width="20" sortable="true" editor="text">წონა</th>
+                <th field="r_bmi" width="20" sortable="true" editor="null">BMI</th>
 				<th field="rec_details" width="40" sortable="true" editor="{type:'textarea'}">დამატებითი ინფორმაცია (მკურნალი ექიმის გვარი, ტელეფონი, სხვა ინფო)</th>
 				<th field="donor" width="20" sortable="true" editor="text">დონორის გვარი, სახელი</th>
 				<th field="don_pid" width="30" sortable="true" editor="text">პირადი ნომერი</th>
@@ -160,7 +163,27 @@ else
 						}
 					});
 					$('#dg').datagrid('fixDetailRowHeight',index);
+
 				}
+				,
+
+                onEndEdit: function(index,row, changes) {
+
+				  var height = $('#dg').datagrid('getRows')[index].r_height;
+				  var weight = $('#dg').datagrid('getRows')[index].r_weight;
+				  if(height!='' && weight!='' && isFinite(height) && isFinite(weight)) {
+                      var bmi = (parseFloat(weight) / Math.pow(parseFloat(height), 2)).toFixed(3);
+
+                         $('#dg').datagrid('updateRow',{
+                                index: index,
+                                row: {
+                                    r_bmi: bmi.toString()
+                                }
+                        });
+                  }
+
+                }
+
 			});
 
 			$('#ss').searchbox({
@@ -174,6 +197,8 @@ else
 			$("div.datagrid-cell-c2-rec_details").parent().css('border-right','1px solid black');
 			$(".datagrid-header-row td").eq(2).css({'background-color':'#9b9b9b', 'color':'white'});
 			//$(".datagrid-cell-c2-rec_details").parent().css('border-right','1px solid black');
+
+
 
 		});
 

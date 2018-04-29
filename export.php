@@ -63,15 +63,18 @@ $ews->setCellValue('s2', 'ენცეფალოპათია');
 $ews->setCellValue('t2', 'სისხლდენა');
 $ews->setCellValue('u2', 'CHILD');
 $ews->setCellValue('v2', 'MELD');
-$ews->setCellValue('w2', 'დამატებითი ინფორმაცია (მკურნალი ექიმის გვარი, ტელეფონი, სხვა ინფო)');
-$ews->setCellValue('x2', 'დონორის გვარი, სახელი');
-$ews->setCellValue('y2', 'პირადი ნომერი');
-$ews->setCellValue('z2', 'ასაკი');
-$ews->setCellValue('aa2', 'ნათესავური კავშირი');
-$ews->setCellValue('ab2', 'მისამართი');
-$ews->setCellValue('ac2', 'ტელეფონი');
-$ews->setCellValue('ad2', 'სისხლის ჯგუფი და რეზუსი');
-$ews->setCellValue('ae2', 'დამატებითი ინფორმაცია');
+$ews->setCellValue('w2', 'სიმაღლე');
+$ews->setCellValue('x2', 'წონა');
+$ews->setCellValue('y2', 'BMI');
+$ews->setCellValue('z2', 'დამატებითი ინფორმაცია (მკურნალი ექიმის გვარი, ტელეფონი, სხვა ინფო)');
+$ews->setCellValue('aa2', 'დონორის გვარი, სახელი');
+$ews->setCellValue('ab2', 'პირადი ნომერი');
+$ews->setCellValue('ac2', 'ასაკი');
+$ews->setCellValue('ad2', 'ნათესავური კავშირი');
+$ews->setCellValue('ae2', 'მისამართი');
+$ews->setCellValue('af2', 'ტელეფონი');
+$ews->setCellValue('ag2', 'სისხლის ჯგუფი და რეზუსი');
+$ews->setCellValue('ah2', 'დამატებითი ინფორმაცია');
 
 $ea->getActiveSheet()->getColumnDimension('a')->setWidth(10);
 $ea->getActiveSheet()->getColumnDimension('b')->setWidth(30);
@@ -98,12 +101,15 @@ $ea->getActiveSheet()->getColumnDimension('v')->setWidth(15);
 $ea->getActiveSheet()->getColumnDimension('w')->setWidth(35);
 $ea->getActiveSheet()->getColumnDimension('x')->setWidth(30);
 $ea->getActiveSheet()->getColumnDimension('y')->setWidth(25);
-$ea->getActiveSheet()->getColumnDimension('z')->setWidth(5);
-$ea->getActiveSheet()->getColumnDimension('aa')->setWidth(25);
-$ea->getActiveSheet()->getColumnDimension('ab')->setWidth(25);
-$ea->getActiveSheet()->getColumnDimension('ac')->setWidth(25);
-$ea->getActiveSheet()->getColumnDimension('ad')->setWidth(15);
-$ea->getActiveSheet()->getColumnDimension('ae')->setWidth(35);
+$ea->getActiveSheet()->getColumnDimension('z')->setWidth(15);
+$ea->getActiveSheet()->getColumnDimension('aa')->setWidth(15);
+$ea->getActiveSheet()->getColumnDimension('ab')->setWidth(15);
+$ea->getActiveSheet()->getColumnDimension('ac')->setWidth(5);
+$ea->getActiveSheet()->getColumnDimension('ad')->setWidth(25);
+$ea->getActiveSheet()->getColumnDimension('ae')->setWidth(25);
+$ea->getActiveSheet()->getColumnDimension('af')->setWidth(25);
+$ea->getActiveSheet()->getColumnDimension('ag')->setWidth(15);
+$ea->getActiveSheet()->getColumnDimension('ah')->setWidth(35);
 
 $data = array();
 
@@ -111,7 +117,7 @@ $count = 0;
 while ($row = mysql_fetch_array($user_query)) {
 
  $newArr = array();
- for($i=1; $i<32; $i++)
+ for($i=1; $i<35; $i++)
    array_push($newArr, $row[$i]);
 
   array_push($data, $newArr);

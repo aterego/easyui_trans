@@ -27,6 +27,9 @@ $rec_address = $_REQUEST['rec_address'];
 $rec_phone = $_REQUEST['rec_phone'];
 $child = $_REQUEST['child'];
 $meld = $_REQUEST['meld'];
+$r_height = $_REQUEST['r_height'];
+$r_weight = $_REQUEST['r_weight'];
+$r_bmi = $_REQUEST['r_bmi'];
 $rec_details = $_REQUEST['rec_details'];
 $donor = $_REQUEST['donor'];
 $don_pid = $_REQUEST['don_pid'];
@@ -46,9 +49,9 @@ include 'conn.php';
 
 
 $sql = "insert into persons(ddate,doctor,recipient,rec_pid,rec_age,diagnosis,rhesus,fibrosis,bilirubin,ast,alt,ggt,cr,inr,ascites,albumin,encephalopathy,
-          bleeding,rec_address,rec_phone,child,meld,rec_details,donor,don_pid,don_age,relationship,don_address,don_phone,don_rhesus,don_details,modified)
+          bleeding,rec_address,rec_phone,child,meld,r_height,r_weight,r_bmi,rec_details,donor,don_pid,don_age,relationship,don_address,don_phone,don_rhesus,don_details,modified)
         values('$ddate','$doctor','$recipient','$rec_pid','$rec_age','$diagnosis','$rhesus','$fibrosis','$bilirubin','$ast','$alt','$ggt','$cr','$inr',
-          '$ascites','$albumin','$encephalopathy','$bleeding','$rec_address','$rec_phone','$child','$meld','$rec_details','$donor','$don_pid','$don_age',
+          '$ascites','$albumin','$encephalopathy','$bleeding','$rec_address','$rec_phone','$child','$meld','$r_height','$r_weight','$r_bmi','$rec_details','$donor','$don_pid','$don_age',
           '$relationship', '$don_address','$don_phone','$don_rhesus','$don_details',now())";
 
 
@@ -78,6 +81,9 @@ echo json_encode(array(
 	'child' => $child,
 	'meld' => $meld,
 	'rec_details' => $rec_details,
+	'r_height' => $r_height,
+    'r_weight' => $r_weight,
+    'r_bmi' => $r_bmi,
 	'donor' => $donor,
 	'don_pid' => $don_pid,
 	'don_age' => $don_age,
